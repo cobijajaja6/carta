@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+            font-family: Arial, sans-serif;
+        }
+        .mensaje {
+            border: 2px solid #ff69b4;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            background-color: #fff;
+            position: relative;
+            width: 300px; /* Ancho fijo para el contenedor */
+            height: 300px; /* Alto fijo para el contenedor */
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .si {
+            background-color: #4CAF50; /* Verde */
+            color: white;
+        }
+        .no {
+            background-color: #f44336; /* Rojo */
+            color: white;
+            position: absolute; /* Para mover el botón */
+        }
+        .imagen {
+            width: 100px; /* Ajusta el tamaño de la imagen */
+            height: auto; /* Mantiene la proporción */
+            position: absolute; /* Para posicionar fuera del contenedor */
+        }
+        .imagen1 {
+            top: -120px; /* Ajusta la posición vertical */
+            left: 10px; /* Ajusta la posición horizontal */
+        }
+        .imagen2 {
+            top: -120px; /* Ajusta la posición vertical */
+            right: 20px; /* Ajusta la posición horizontal */
+        }
+    </style>
+</head>
+<body>
+
+<div class="mensaje">
+    <h2>¿Quieres ser mi San Valentín?</h2>
+    <img src="https://i.pinimg.com/236x/69/1b/d6/691bd6c264fecf10121f1daa74367243.jpg" alt="Corazón" class="imagen imagen1"> <!-- Corazón -->
+    <img src="https://i.pinimg.com/736x/d1/19/4c/d1194c4166ba7c3d9fb4d10cf407941e.jpg" alt="Flores" class="imagen imagen2"> <!-- Flores -->
+    <button class="si" onclick="respuesta('si')">Sí</button>
+    <button class="no" onclick="moverNo()">No</button>
+</div>
+
+<script>
+    function respuesta(opcion) {
+        if (opcion === 'si') {
+            alert('Ya sabia que dirias que siii vdd q si?? ❤️');
+        } 
+    }
+
+    function moverNo() {
+        const mensajeDiv = document.querySelector('.mensaje');
+        const noButton = document.querySelector('.no');
+        
+        // Obtener las dimensiones del contenedor
+        const containerWidth = mensajeDiv.clientWidth;
+        const containerHeight = mensajeDiv.clientHeight;
+
+        // Generar nuevas coordenadas aleatorias dentro del contenedor
+        const maxWidth = containerWidth - noButton.offsetWidth - 20; // 20 para el margen
+        const maxHeight = containerHeight - noButton.offsetHeight - 20; // 20 para el margen
+
+        const randomX = Math.random() * maxWidth;
+        const randomY = Math.random() * maxHeight;
+
+        noButton.style.left = randomX + 'px';
+        noButton.style.top = randomY + 'px';
+    }
+</script>
+
+</body>
+</html>
